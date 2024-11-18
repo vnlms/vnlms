@@ -1,0 +1,40 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+
+# Environment variables
+.env
+
+# Runtime data
+*.pid
+*.seed
+*.pid.lock
+
+# Cache directories
+.cache/
+coverage/
+
+# IDE specific
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+.DS_Store
+
+# Temporary files
+*.swp
+*.tmp
+*.bak
+*.orig
+
+# Debug files
+debug.log
+*.stackdump
