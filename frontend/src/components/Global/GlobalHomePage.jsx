@@ -9,7 +9,7 @@ const GlobalHomePage = () => {
       title: 'College Branding and Promotion Offline & Online',
       description: 'Our College Branding and Promotion services at Ntechzy Pvt Ltd are designed to elevate the ...',
       imageUrl: 'https://gaaga.wpengine.com/wp-content/uploads/2023/06/home-portfolio-listing-images-5-1.jpg',
-      link: '/mn/home',
+      link: '/mn',
     },
     {
       title: 'Influencer Marketing',
