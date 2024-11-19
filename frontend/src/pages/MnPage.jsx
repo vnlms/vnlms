@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import MnHome from '../components/MnComponent/MnHome/MnHome';
+import {Route, Routes } from 'react-router-dom';
+import Mnhome from '../components/MnComponent/MnHome/MnHome';
 import MnNavbar from '../components/MnComponent/MnNavbar';
 import MnMainCourse from '../components/MnComponent/MnCourse/MnMainCourse';
 import MnParticularCourse from '../components/MnComponent/MnCourse/MnParticularCourse';
@@ -14,7 +14,7 @@ const MnPage = () => {
       <div>
         <MnNavbar /> {/* Always visible Navbar */}
         <Routes>
-          <Route path="/home" element={<MnHome />} />
+          <Route path="/home" element={<Mnhome />} />
           <Route path="/course" element={<MnMainCourse />} />
           <Route path="/course/:id" element={<MnParticularCourse />} />
           <Route path="/challenge" element={<MnMainChallenges />} />

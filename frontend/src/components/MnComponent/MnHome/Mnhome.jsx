@@ -2,7 +2,7 @@ import React from "react";
 import MnFeatureCard from "./MnFeatureCard";
 import MnTestimonial from "./MnTestimonial";
 
-const MnHome = () => {
+const Mnhome = () => {
   return (
     <div className="bg-gray-100 text-white">
       {/* Hero Banner */}
@@ -92,4 +92,4 @@ const MnHome = () => {
   );
 };
 
-export default MnHome;
+export default Mnhome;
