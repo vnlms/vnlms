@@ -14,7 +14,7 @@ const App = () => {
         <div className="p-4">
           <Routes>
             <Route path="/" element={<GlobalPage />} /> {/* Default route */}
-            <Route path="/mn" element={<MnPage />} /> {/* MnPage for /mn routes */}
+            <Route path="/mn" element={"kjhjjjjhkjhjkhkhhj"} /> {/* MnPage for /mn routes */}
             <Route path="/mn/*" element={<MnPage />} /> {/* MnPage for /mn routes */}
           </Routes>
         </div>
