@@ -1,12 +1,12 @@
 import React from 'react';
 import {Route, Routes } from 'react-router-dom';
-import Mnhome from '../components/MnComponent/MnHome/MnHome';
 import MnNavbar from '../components/MnComponent/MnNavbar';
 import MnMainCourse from '../components/MnComponent/MnCourse/MnMainCourse';
 import MnParticularCourse from '../components/MnComponent/MnCourse/MnParticularCourse';
 import MnMainChallenges from '../components/MnComponent/MnChallenge/MnMainChallenge';
 import MnChallengeParticipation from '../components/MnComponent/MnChallenge/MnChallengeParticipation';
 import MnCommunity from '../components/MnComponent/MnChat/MnCommunity';
+import Mnhome from '../components/MnComponent/MnHome/Mnhome';
 
 const MnPage = () => {
   return (
