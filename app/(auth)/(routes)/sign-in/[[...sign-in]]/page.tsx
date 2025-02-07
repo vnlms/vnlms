@@ -5,9 +5,9 @@ export default function Page() {
   return (
     <div>
       <SignIn />
-    <div className='md:hidden '>
+    {/* <div className='md:hidden '>
     <SignUp />
-    </div>
+    </div> */}
     </div>
     
   )
