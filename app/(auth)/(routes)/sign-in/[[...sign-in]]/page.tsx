@@ -1,14 +1,8 @@
-import { SignIn, SignUp } from '@clerk/nextjs'
+import { SignIn } from '@clerk/nextjs'
 
 
 export default function Page() {
   return (
-    <div>
-      <SignIn />
-    {/* <div className='md:hidden '>
-    <SignUp />
-    </div> */}
-    </div>
-    
+    <SignIn />
   )
 }
