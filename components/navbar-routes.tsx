@@ -9,7 +9,7 @@ import Link from "next/link";
 
 const NavbarRoutes = () => {
   const pathname = usePathname();
-  const router = useRouter();
+  // const router = useRouter();
   const isTeacherPage = pathname?.startsWith("/teacher");
   const isPlayerPage = pathname?.includes("/chapter");
   return (
