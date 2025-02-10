@@ -1,5 +1,7 @@
 "use client";
 import { title } from "process";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
 import {
@@ -15,12 +17,14 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import toast from "react-hot-toast";
 const formSchema = zod.object({
   title: zod.string().min(1, {
     message: "Title is required",
   }),
 });
 const CreatePage = () => {
+  const router = useRouter();
   const form = useForm<zod.z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -28,8 +32,16 @@ const CreatePage = () => {
     },
   });
   const { isSubmitting, isValid } = form.formState;
-  const onSubmit = (values: zod.z.infer<typeof formSchema>) => {
-    console.log(values);
+  const onSubmit = async (values: zod.z.infer<typeof formSchema>) => {
+    try {
+      console.log("values",values);
+      
+      const response = await axios.post("/api/courses", values);
+      router.push(`/teacher/courses/${response.data.id}`);
+      toast.success("Course created");
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
   };
   return (
     <div className="max-w-5xl mx-auto flex md:items-center md:justify-center h-full p-6">
@@ -65,15 +77,14 @@ const CreatePage = () => {
               )}
             />
             <div className="flex items-center gap-x-2">
-                <Link href="/">
-                
-        <Button type="button" variant="ghost">
-            cancel
-        </Button>
-                </Link>
-                <Button type="submit" disabled={!isValid || isSubmitting}>
-                    Continue
+              <Link href="/">
+                <Button type="button" variant="ghost">
+                  Cancel
                 </Button>
+              </Link>
+              <Button type="submit" disabled={!isValid || isSubmitting}>
+                Continue
+              </Button>
             </div>
           </form>
         </Form>
