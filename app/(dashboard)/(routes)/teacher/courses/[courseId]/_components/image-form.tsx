@@ -1,5 +1,4 @@
 "use client";
-c
 import axios from "axios";
 
 import { Button } from "@/components/ui/button";

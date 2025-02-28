@@ -1,4 +1,4 @@
-"use client";c
+"use client";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { FileIcon, Loader2, PlusCircle, X } from "lucide-react";
