@@ -37,6 +37,8 @@ const Actions = ({
       }
       router.refresh();
     } catch (error) {
+      console.log(error);
+      
       toast.error("Something went wrong");
     }finally{
       setIsLoading(false);
@@ -46,10 +48,12 @@ const Actions = ({
     try {
       setIsLoading(true);
       await axios.delete(`/api/courses/${courseId}`);
-      toast.success("Chapter Deleted");
+      toast.success("Course Deleted");
       router.refresh();
       router.push(`/teacher/courses`);
     } catch (error) {
+      console.log(error);
+      
       toast.error("Something went wrong");
     } finally {
       setIsLoading(false);

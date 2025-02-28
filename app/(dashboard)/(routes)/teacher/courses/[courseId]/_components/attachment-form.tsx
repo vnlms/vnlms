@@ -1,7 +1,6 @@
 "use client";
 import * as z from "zod";
 import axios from "axios";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { FileIcon, Loader2, PlusCircle, X } from "lucide-react";
 import { useState } from "react";
@@ -15,9 +14,9 @@ interface AttachmentFormProps {
   courseId: string;
 }
 
-const formSchema = z.object({
-  url: z.string().min(1),
-});
+// const formSchema = z.object({
+//   url: z.string().min(1),
+// });
 
 const AttachmentForm = ({ initialData, courseId }: AttachmentFormProps) => {
   const router = useRouter();
@@ -34,6 +33,8 @@ const AttachmentForm = ({ initialData, courseId }: AttachmentFormProps) => {
       toggleEdit();
       router.refresh();
     } catch (error) {
+      console.log(error);
+      
       toast.error("Something went wrong");
     }
   };
@@ -46,7 +47,8 @@ const AttachmentForm = ({ initialData, courseId }: AttachmentFormProps) => {
         toast.success("Attachment deleted");
         router.refresh();
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log(error);
         toast.error("Something went wrong");
       })
       .finally(() => {

@@ -47,7 +47,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
       name: "asc",
     },
   });
-  console.log(categories);
+  // console.log(categories);
   const requiredFields = [
     course.title,
     course.imageUrl,

@@ -74,6 +74,8 @@ export async function DELETE(
     }
     return NextResponse.json(deleteChapter);
   } catch (error) {
+    console.log(error);
+    
     return new NextResponse("Internal Error", { status: 500 });
   }
 }

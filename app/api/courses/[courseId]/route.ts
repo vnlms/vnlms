@@ -64,7 +64,7 @@ export async function DELETE(
 
     return new NextResponse("Course and associated data deleted successfully", { status: 200 });
   } catch (error) {
-    console.error("Error deleting course:", error);
+    // console.error("Error deleting course:", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

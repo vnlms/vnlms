@@ -16,7 +16,6 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Textarea } from "@/components/ui/textarea";
 import { Course } from "@prisma/client";
 import { Combobox } from "@/components/ui/combobox";
 interface CategoryFormProps {
@@ -39,10 +38,12 @@ const CategoryForm = ({ initialData, courseId,options }: CategoryFormProps) => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
-      toast.success("Course title updated");
+      toast.success("Course Category UCpdated");
       toggleEdit();
       router.refresh();
     } catch (error) {
+      console.log(error);
+      
       toast.error("Something went wrong");
     }
   };

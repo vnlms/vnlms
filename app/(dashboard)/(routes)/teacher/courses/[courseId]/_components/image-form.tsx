@@ -1,11 +1,10 @@
 "use client";
 import * as z from "zod";
 import axios from "axios";
-import { zodResolver } from "@hookform/resolvers/zod";
+
 import { Button } from "@/components/ui/button";
 import { ImageIcon, Pencil, PlusCircle } from "lucide-react";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { Course } from "@prisma/client";
@@ -17,11 +16,11 @@ interface ImageFormProps {
   courseId: string;
 }
 
-const formSchema = z.object({
-  imageUrl: z.string().min(1, {
-    message: "Image is required",
-  }),
-});
+// const formSchema = z.object({
+//   imageUrl: z.string().min(1, {
+//     message: "Image is required",
+//   }),
+// });
 
 const ImageForm = ({ initialData, courseId }: ImageFormProps) => {
   const router = useRouter();
@@ -36,7 +35,7 @@ const ImageForm = ({ initialData, courseId }: ImageFormProps) => {
       toggleEdit();
       router.refresh();
     } catch (error) {
-      // console.error("Upload error:", error);
+      console.error("Upload error:", error);
       toast.error("Something went wrong");
     }
   };

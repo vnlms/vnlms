@@ -3,7 +3,7 @@ import * as z from "zod";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
-import { Loader2, Pencil, PlusCircle } from "lucide-react";
+import { Loader2, PlusCircle } from "lucide-react";
 import { useState } from "react";
 import {
   Form,
@@ -17,9 +17,8 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Textarea } from "@/components/ui/textarea";
 import { Chapter, Course } from "@prisma/client";
-import { title } from "process";
+
 import { ChapterList } from "./chapters-list";
 interface ChapterFormProps {
   initialData: Course & { chapters: Chapter [] };
@@ -45,6 +44,7 @@ const ChapterForm = ({ initialData, courseId }: ChapterFormProps) => {
       toggleCreating();
       router.refresh();
     } catch (error) {
+      console.log(error);
       toast.error("Something went wrong");
     }
   };
@@ -61,6 +61,7 @@ const ChapterForm = ({ initialData, courseId }: ChapterFormProps) => {
       router.refresh();
 
     } catch (error) {
+      console.log(error);
       toast.error("Something went wrong");
     }finally{
       setIsUpdating(false);

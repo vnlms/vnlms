@@ -17,11 +17,10 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Textarea } from "@/components/ui/textarea";
 import { Course } from "@prisma/client";
 import { formatPrice } from "@/lib/format";
 interface PriceFormProps {
-  initialData: Course;
+  initialData: Course
   courseId: string;
 }
 const formSchema = z.object({
@@ -43,6 +42,8 @@ const PriceForm = ({ initialData, courseId }: PriceFormProps) => {
       toggleEdit();
       router.refresh();
     } catch (error) {
+      console.log(error);
+  
       toast.error("Something went wrong");
     }
   };

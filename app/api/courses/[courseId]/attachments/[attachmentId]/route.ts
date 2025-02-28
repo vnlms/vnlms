@@ -24,12 +24,12 @@ export async function DELETE(
         {
             return new Response("Unauthorized", {status: 401});
         }
-        const attachment = await db.attachment.delete({
-            where:{
-                id:params.attachmentId,
-                courseId:params.courseId,
-            }
-        })
+        // const attachment = await db.attachment.delete({
+        //     where:{
+        //         id:params.attachmentId,
+        //         courseId:params.courseId,
+        //     }
+        // })
         return new Response("OK",{status:200});
     }
     catch(error)

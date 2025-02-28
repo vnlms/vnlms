@@ -1,8 +1,7 @@
 "use client";
-import * as z from "zod";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
-import { ImageIcon, Pencil, PlusCircle } from "lucide-react";
+import { ImageIcon} from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -29,7 +28,7 @@ const ChapterVideoForm = ({ initialData, courseId, chapterId }: ChapterVideoProp
       toggleEdit();
       router.refresh();
     } catch (error) {
-      // console.error("Upload error:", error);
+      console.error("Upload error:", error);
       toast.error("Something went wrong. Please try again.");
     }
   };
@@ -53,7 +52,7 @@ const ChapterVideoForm = ({ initialData, courseId, chapterId }: ChapterVideoProp
               }
             }}
           />
-          <div className="text-xs text-muted-foreground mt-4">Upload this chapter's video</div>
+          <div className="text-xs text-muted-foreground mt-4">Upload this chapter&apos;s video</div>
         </div>
       ) : initialData.videoUrl ? (
         <div className="relative aspect-video mt-4">

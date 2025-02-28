@@ -16,7 +16,7 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import toast from "react-hot-toast";
+import toast from "react-hot-toast"
 const formSchema = zod.object({
   title: zod.string().min(1, {
     message: "Title is required",
@@ -39,6 +39,7 @@ const CreatePage = () => {
       router.push(`/teacher/courses/${response.data.id}`);
       toast.success("Course created");
     } catch (error) {
+      console.log(error);
       toast.error("Something went wrong");
     }
   };

@@ -51,13 +51,17 @@ export async function PATCH(
       },
     });
     if (!publishedChapterInCourse.length) {
-      const course = await db.course.update({
-        where: { id: params.courseId },
-        data: { isPublished: false },
-      });
+    //   const course = await db.course.update({
+    //     where: { id: params.courseId },
+    //     data: { isPublished: false },
+    //   });
+    console.log("hey");
+    
     }
     return NextResponse.json(unpublishedChapter);
   } catch (error) {
+    console.log(error);
+    
     return new NextResponse("Internal server error", { status: 500 });
   }
 }
