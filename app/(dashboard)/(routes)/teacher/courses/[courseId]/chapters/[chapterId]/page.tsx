@@ -11,25 +11,17 @@ import ChapterVideoForm from "./_componentss/chapter-video-form";
 import Banner from "@/components/banner";
 import ChapterActions from "./_componentss/chapter-actions";
 
-// ✅ Correctly define the function with `params`
-interface ChapterIdPageProps {
-  params: {
-    courseId: string;
-    chapterId: string;
-  };
-}
-
-const ChapterIdPage = async ({ params }: ChapterIdPageProps) => {
-  const { courseId, chapterId } = params; // ✅ Destructure safely
-  const { userId } = await auth();
-  if (!userId) {
+// ✅ Explicitly defining `params` as an object
+const ChapterIdPage = async ({ params }: { params: { courseId: string; chapterId: string } }) => {
+  const user = await auth();
+  if (!user?.userId) {
     return redirect("/");
   }
 
   const chapter = await db.chapter.findUnique({
     where: {
-      id: chapterId,
-      courseId: courseId,
+      id: params.chapterId,
+      courseId: params.courseId,
     },
     include: {
       muxData: true,
@@ -51,14 +43,14 @@ const ChapterIdPage = async ({ params }: ChapterIdPageProps) => {
       {!chapter.isPublished && (
         <Banner
           variant="warning"
-          label={`This chapter is not published. It will not be visible in the course until it is published`}
+          label="This chapter is not published. It will not be visible in the course until it is published."
         />
       )}
       <div className="p-6">
         <div className="flex items-center justify-between">
           <div className="w-full">
             <Link
-              href={`/teacher/courses/${courseId}`}
+              href={`/teacher/courses/${params.courseId}`}
               className="flex items-center text-sm hover:opacity-75 transition mb-6"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
@@ -73,8 +65,8 @@ const ChapterIdPage = async ({ params }: ChapterIdPageProps) => {
               </div>
               <ChapterActions
                 disabled={!isCompleted}
-                courseId={courseId}
-                chapterId={chapterId}
+                courseId={params.courseId}
+                chapterId={params.chapterId}
                 isPublished={chapter.isPublished}
               />
             </div>
@@ -87,12 +79,15 @@ const ChapterIdPage = async ({ params }: ChapterIdPageProps) => {
                 <IconBadge icon={LayoutDashboard} />
                 <h2 className="text-xl">Customize your chapter</h2>
               </div>
-              {/* Chapter title form */}
-              <ChapterTitleForm initialData={chapter} courseId={courseId} chapterId={chapterId} />
+              <ChapterTitleForm
+                initialData={chapter}
+                courseId={params.courseId}
+                chapterId={params.chapterId}
+              />
               <ChapterDescriptionForm
                 initialData={chapter}
-                courseId={courseId}
-                chapterId={chapterId}
+                courseId={params.courseId}
+                chapterId={params.chapterId}
               />
             </div>
             <div>
@@ -100,7 +95,11 @@ const ChapterIdPage = async ({ params }: ChapterIdPageProps) => {
                 <IconBadge icon={Eye} />
                 <h2 className="text-xl">Access Settings</h2>
               </div>
-              <ChapterAccessForm initialData={chapter} courseId={courseId} chapterId={chapterId} />
+              <ChapterAccessForm
+                initialData={chapter}
+                courseId={params.courseId}
+                chapterId={params.chapterId}
+              />
             </div>
           </div>
           <div>
@@ -108,7 +107,11 @@ const ChapterIdPage = async ({ params }: ChapterIdPageProps) => {
               <IconBadge icon={Video} />
               <h2 className="text-xl">Add a video</h2>
             </div>
-            <ChapterVideoForm initialData={chapter} chapterId={chapterId} courseId={courseId} />
+            <ChapterVideoForm
+              initialData={chapter}
+              chapterId={params.chapterId}
+              courseId={params.courseId}
+            />
           </div>
         </div>
       </div>
