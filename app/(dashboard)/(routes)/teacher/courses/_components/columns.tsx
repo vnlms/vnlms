@@ -5,7 +5,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { cn } from "@/lib/utils";
 import { Course } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown,dMoreHorizontal, Pencil } from "lucide-react";
+import { ArrowUpDown, Pencil } from "lucide-react";
 import Link from "next/link"; // ✅ Corrected import
 
 export const columns: ColumnDef<Course>[] = [

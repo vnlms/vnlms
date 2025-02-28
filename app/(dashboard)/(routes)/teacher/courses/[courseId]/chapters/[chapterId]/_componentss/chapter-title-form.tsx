@@ -34,6 +34,8 @@ const ChapterTitleForm = ({ initialData, courseId,chapterId }: ChapterTitleFormP
       toggleEdit();
       router.refresh();
     } catch (error) {
+      console.log(error);
+      
       toast.error("Something went wrong");
     }
   };
