@@ -1,5 +1,6 @@
 import Navbar from "./_components/navbar";
 import Sidebar from "./_components/sidebar";
+import "@uploadthing/react/styles.css";
 
 const DashboardLayout = ({children}:{
     children:React.ReactNode
