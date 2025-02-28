@@ -11,12 +11,12 @@ import ChapterVideoForm from "./_componentss/chapter-video-form";
 import Banner from "@/components/banner";
 import ChapterActions from "./_componentss/chapter-actions";
 
-interface ChapterIdPageProps {
+type ChapterIdPageProps = {
   params: Promise<{ courseId: string; chapterId: string }>;
-}
+};
 
 const ChapterIdPage = async ({ params }: ChapterIdPageProps) => {
-  // ✅ Ensure params are resolved correctly
+  // ✅ Convert `params` into a resolved object
   const { courseId, chapterId } = await params;
 
   // ✅ Ensure user is authenticated properly
@@ -96,7 +96,11 @@ const ChapterIdPage = async ({ params }: ChapterIdPageProps) => {
               <IconBadge icon={Video} />
               <h2 className="text-xl">Add a video</h2>
             </div>
-            <ChapterVideoForm initialData={chapter} chapterId={chapterId} courseId={courseId} />
+            <ChapterVideoForm
+              initialData={chapter}
+              chapterId={chapterId}
+              courseId={courseId}
+            />
           </div>
         </div>
       </div>
