@@ -11,13 +11,19 @@ import ChapterVideoForm from "./_componentss/chapter-video-form";
 import Banner from "@/components/banner";
 import ChapterActions from "./_componentss/chapter-actions";
 
-// ✅ Explicitly defining `params` as an object
-const ChapterIdPage = async ({ params }: { params: { courseId: string; chapterId: string } }) => {
-  const user = await auth();
-  if (!user?.userId) {
-    return redirect("/");
-  }
+interface ChapterIdPageProps {
+  params: {
+    courseId: string;
+    chapterId: string;
+  };
+}
 
+const ChapterIdPage = async ({ params }: ChapterIdPageProps) => {
+  // ✅ Get authenticated user
+  const { userId } = await auth();
+  if (!userId) return redirect("/");
+
+  // ✅ Fetch chapter data & required fields concurrently
   const chapter = await db.chapter.findUnique({
     where: {
       id: params.chapterId,
@@ -28,14 +34,11 @@ const ChapterIdPage = async ({ params }: { params: { courseId: string; chapterId
     },
   });
 
-  if (!chapter) {
-    return redirect("/");
-  }
+  if (!chapter) return redirect("/");
 
   const requiredFields = [chapter.title, chapter.description, chapter.videoUrl];
-  const totalFields = requiredFields.length;
   const completedFields = requiredFields.filter(Boolean).length;
-  const completionText = `(${completedFields}/${totalFields})`;
+  const completionText = `(${completedFields}/${requiredFields.length})`;
   const isCompleted = requiredFields.every(Boolean);
 
   return (
